@@ -1,0 +1,77 @@
+<html>
+
+   <head>
+      <title>Create Account</title>
+
+      <style type = "text/css">
+         body {
+            font-family:Arial, Helvetica, sans-serif;
+            font-size:14px;
+         }
+         label {
+            font-weight:bold;
+            width:100px;
+            font-size:14px;
+         }
+         .box {
+            border:#666666 solid 1px;
+         }
+      </style>
+
+   </head>
+
+   <body bgcolor = "#FFFFFF">
+
+      <div align = "center">
+         <div style = "width:300px; border: solid 1px #333333; " align = "left">
+            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Create Account</b></div>
+
+            <div style = "margin:30px">
+
+               <form action = "" method = "post">
+                   <label for="username">Username:  </label><input type = "text" name = "username"/><br />
+                   <label for="password">Password:  </label><input type = "password" name = "password"/><br/>
+                   <label for="name">Name:  </label><input type = "text" name = "name"/><br/>
+                   <label for="gender">Gender:  </label><br>
+                        <input type="radio" name="gender" value="male"> Male<br>
+                        <input type="radio" name="gender" value="female"> Female<br>
+                        <input type="radio" name="gender" value="other"> Other <br>
+                    <label for="age">Age:  </label> <input type="number" name="age" min="1" max="99" value="0"><br>
+                    <label for="religion">Religious Affiliation:  </label><br>
+                       <input type="radio" name="religion" value="Christian"> Christian<br>
+                       <input type="radio" name="religion" value="Hindu"> Hindu<br>
+                       <input type="radio" name="religion" value="Jewish"> Jewish<br>
+                       <input type="radio" name="religion" value="Interfaith"> Interfaith<br>
+                       <input type="radio" name="religion" value="Mormon"> Mormon<br>
+                       <input type="radio" name="religion" value="Agonstic"> Agonstic<br>
+                       <input type="radio" name="religion" value="Atheist"> Atheist<br>
+                       <input type="radio" name="religion" value="other"> Other<br>
+                    <label for="ethnicity">Ethnicity:  </label><br>
+                       <input type="radio" name="ethnicity" value="White"> White<br>
+                       <input type="radio" name="ethnicity" value="Asian"> Asian<br>
+                       <input type="radio" name="ethnicity" value="Hispanic"> Hispanic<br>
+                       <input type="radio" name="ethnicity" value="African-American"> African-American<br>
+                       <input type="radio" name="ethnicity" value="Native American"> Native American<br>
+                       <input type="radio" name="ethnicity" value="other"> Other<br>
+                    <label for="party">Political Party:  </label><br>
+                       <input type="radio" name="party" value="Democratic"> Democratic<br>
+                       <input type="radio" name="party" value="Republican"> Republican<br>
+                       <input type="radio" name="party" value="Libertrian"> Libertarian<br>
+                       <input type="radio" name="party" value="None"> None<br>
+                       <input type="radio" name="party" value="Other"> Other<br>
+                    <label for="income">Yearly Income:  </label> <input type="number" name="income" min="0" max="99999999"><br>
+                    <label for="occupation">Occupation:  </label><input type = "text" name = "occupation"/><br/><br />
+
+                   <input type = "submit" value = " Create Account! "/><br />
+               </form>
+
+      <!--         <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>-->
+			   <!--<div style = "font-size:11px; color:green; margin-top:10px"><?php echo $success; ?></div>	-->
+            </div>
+
+         </div>
+
+      </div>
+
+   </body>
+</html>

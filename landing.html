@@ -1,0 +1,73 @@
+<h1>Foresight 2020</h1>
+<h3>
+You have successfully logged in, <%= name %>!
+</h3>
+<p>
+Your previously recommended candidate is <%= rec %>!
+</p>
+<p>
+<!-- <?php echo $take_survey; ?> -->
+</p>
+<body bgcolor = "#FFFFFF">
+
+      <div align = "center">
+         <div style = "width:600px; border: solid 1px #333333; " align = "left">
+            <div style = "background-color:#333333; color:#FFFFFF; padding:3px;"><b>Survey</b></div>
+
+            <div style = "margin:30px">
+							<b>Rate each issue from 0-10, where 0 = strongly disagree and 10 = strongly agree.</b><br /><br />
+
+               <form action = "" method = "post">
+                  <label for="abortion" >Abortion is a woman's unrestricted right:</label>
+                    <input name="abortion" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                  <label for="employment">We should legally require hiring women & minorities:</label>
+				    <input name="employment" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="same_sex_marriage">I am comfortable with same-sex marriage:</label>
+					<input name="same_sex_marriage" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+				<label for="religion">We should keep God in the public sphere:</label>
+                    <input name="religion" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="obamacare">We should expand ObamaCare:</label>
+                    <input name="obamacare" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="social_security">We should privatize Social Security:</label>
+                    <input name="social_security" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+				<label for="education">Vouchers for school choice:</label>
+                    <input name="education" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="environment">We should fight EPA regulatory over-reach:</label>
+                    <input name="environment" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="crime">Stricter punishment reduces crime:</label>
+                    <input name="crime" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="gun">Gun ownership should be an absolute right:</label>
+                    <input name="gun" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="taxes">We should impose higher taxes on the wealthy:</label>
+                    <input name="taxes" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="immigrations">There should be a pathway to citizenship for illegal aliens:</label>
+                    <input name="immigrations" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="trade">We should support and expand free trade:</label>
+                    <input name="trade" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="foreign_policy">I support American Exceptionalism:</label>
+                    <input name="foreign_policy" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="military">We should expand the military:</label>
+                    <input name="military" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="voting">We should make voter registration easier:</label>
+                    <input name="voting" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="international_affairs">We should avoid foreign entanglements:</label>
+                    <input name="international_affairs" type="number" min=0 max=10 maxlength=2 value=0><br/><br />
+                <label for="climate_change">We should prioritize green energy:</label>
+                    <input name="climate_change" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="drugs">Marijuana is a gateway drug:</label>
+                    <input name="drugs" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                <label for="economy">Stimulus is better than market-led recovery:</label>
+                    <input name="economy" type="number" min=0 max=10 maxlength=2 value=0><br /><br />
+                    <input type = "submit" value = " Submit "/><br />
+               </form>
+
+               <div style = "font-size:11px; color:#cc0000; margin-top:10px"><?php echo $error; ?></div>
+			<div style = "font-size:11px; color:green; margin-top:10px"><?php echo $success; ?></div>
+            </div>
+
+         </div>
+
+      </div>
+
+   </body>
+  <a href="delete">Delete result here!</a>

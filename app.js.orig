@@ -1,0 +1,133 @@
+var mysql = require('mysql');
+var express = require('express');
+const session = require('express-session');
+var app = express();
+app.use(session({secret: 'ssshhhhh'}));
+
+const port = 3000
+var survey_results;
+
+var bodyParser = require('body-parser');
+app.use(bodyParser.urlencoded({ extended: true }));
+
+var router = express.Router();
+
+var connection = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: 'password',
+  database: 'rrout2_foresight2020'
+})
+
+app.get('/login', function (req, res) {
+  res.sendFile(__dirname + '/login.html');
+});
+
+app.post('/login', function (req, res) {
+	sess = req.session;
+  	var tryy = "SELECT * FROM User WHERE username = '" + req.body.username + "' and password = '" + req.body.password + "'";
+  	connection.query(tryy, function(err, rows, fields) {
+  		console.log(rows);
+		if (!err){
+			if (rows.length > 0) {
+				sess.username = req.body.username;
+				return res.redirect('/landing');
+			}
+		} else {
+		    console.log('Error while performing Query.');
+		    res.end();
+		}
+	});
+});
+
+app.post('/createaccount', function (req, res){
+	var try1 = "SELECT MAX(UserID) as uid FROM User;";
+	connection.query(try1, function(err2,rows2,fields2) {
+		if(err2) {
+			console.log('Error while performing Query to find max id.');
+			res.end();
+		} else {
+			var maxx = rows2[0].uid;
+			console.log(typeof maxx);
+			var newId = parseInt(maxx) + parseInt(1);
+			console.log("newID: " + newId);
+			var tryy = 'INSERT INTO User (userID,username,password, name, gender,rel_affiliation,ethnicity,age,party,income,occupation) VALUES('
+			+ newId + ",'" + req.body.username + "','" + req.body.password + "','" + req.body.name + "','" 
+			+ req.body.gender + "','" + req.body.religion + "','" + req.body.ethnicity + "','" 
+			+ req.body.age + "','" + req.body.party + "','" + req.body.income + "','" + req.body.occupation + "')";
+
+			console.log(tryy);
+			connection.query(tryy, function(err1,rows1,fields1) {
+				if(!err1) {
+					return res.redirect('/login');
+				} else {
+					console.log("Querror (query error)");
+					res.end();
+				}
+			});
+			
+		}
+	});
+	
+});
+
+app.get('/landing', function (req, res) {
+<<<<<<< HEAD
+  res.sendFile(__dirname + '/landing.html');
+=======
+	sess = req.session;
+	if(!sess.username) {
+		return res.redirect('/login');
+	}
+	var tryy = "SELECT name FROM User WHERE username = '" + sess.username + "'";
+	connection.query(tryy, function(err1,rows1,fields1) {
+		if(!err1) {
+			var name = rows1[0].name;
+			// res.render(".", {name:name});
+			// var elem = document.getElementById("msg");
+			// elem = name;
+			// res.send({name:name});
+		} else {
+			console.log("Querror (query error)");
+			res.end();
+		}
+	});
+  	res.sendfile(__dirname + '/landing.html');
+>>>>>>> 7f05612dc09aa0aadb2d0dd9acc148abbc902049
+});
+
+app.post('/landing', function (req, res) {
+    survey_results = req.body;
+	console.log(req.body);
+    res.redirect('/recommendation')
+	res.end()
+});
+
+app.get('/createaccount', function (req, res) {
+  res.sendFile(__dirname + '/createaccount.html');
+});
+
+app.get('/delete', function (req, res) {
+  res.sendFile(__dirname + '/delete.html');
+});
+
+app.get('/recommendation', function (req, res) {
+    const spawn = require('child_process').spawn;
+    const ls = spawn('python', ['recommendations.py','tham', 'Senate', 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2]);
+    ls.stdout.on('data', (data) => {console.log(`stdout: ${data}`); });
+    ls.stderr.on('data', (data) => {console.log(`stderr: ${data}`);});
+    ls.on('close', (code) => {console.log(`child process exited with code ${code}`);});
+
+    // var sys = require('sys'),
+    // spawn = require('child_process').spawn,
+    // dummy = spawn('python', ['recommendations.py', survey_results]);
+    // console.log(dummy)
+
+    // dummy.stdout.on('data', function(data) {
+    //     sys.print(data.toString());
+    // });
+});
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+
+module.exports = app;
